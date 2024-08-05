@@ -6,7 +6,7 @@
     <parent>
         <groupId>cn.vic.scaffold</groupId>
         <artifactId>v-boot</artifactId>
-        <version>1.0.0</version>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>v-boot-starter</artifactId>
