@@ -1,10 +1,24 @@
 server:
-  port: 8080
+  port: 80
   servlet:
     context-path: /shardingsphere-api
 
 spring:
+  #  profiles:
+  #    active: dev
   application:
     name: shardingsphere-api
-  profiles:
-    active: dev
+  datasource:
+    driver-class-name: org.apache.shardingsphere.driver.ShardingSphereDriver
+    url: jdbc:shardingsphere:classpath:spring-sharding.yml
+
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+logging:
+  level:
+    cn.vic.trial.shardingsphere: DEBUG

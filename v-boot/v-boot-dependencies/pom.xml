@@ -24,7 +24,7 @@
         <mybatis.version>3.5.10</mybatis.version>
         <mybatis-spring.version>3.0.1</mybatis-spring.version>
         <mybatis-spring-boot.version>3.0.1</mybatis-spring-boot.version>
-        <shardingsphere.version>5.4.1</shardingsphere.version>
+        <shardingsphere.version>5.5.0</shardingsphere.version>
         <mybatis-plus.version>3.5.5</mybatis-plus.version>
 
         <hutool.version>5.8.30</hutool.version>
@@ -99,4 +99,25 @@
         </dependencies>
     </dependencyManagement>
 
+    <repositories>
+        <repository>
+            <id>central-repos</id>
+            <name>Central Repository</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+        <repository>
+            <id>central</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <layout>default</layout>
+            <!-- 是否开启发布版构件下载 -->
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <!-- 是否开启快照版构件下载 -->
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 </project>

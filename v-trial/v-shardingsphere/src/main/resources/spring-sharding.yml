@@ -1,0 +1,53 @@
+# 数据源配置
+dataSources:
+#  # 数据源名称，多数据源以逗号分隔
+#  names: ds0,ds1
+  ds0:
+    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    jdbcUrl: jdbc:mysql://127.0.0.1:3306/device0?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true
+    username: root
+    password: '!qaz2wsx'
+  ds1:
+    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    jdbcUrl: jdbc:mysql://127.0.0.1:3306/device1?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true
+    username: root
+    password: '!qaz2wsx'
+
+# 分片规则配置
+rules:
+- !SINGLE
+  tables:
+    - "*.*"
+- !SHARDING
+  tables:
+    router_config:
+      actualDataNodes: ds$->{0..1}.router_config_$->{0..2}
+      tableStrategy:
+        standard:
+          shardingColumn: id
+          shardingAlgorithmName: t-router-config-inline
+      keyGenerateStrategy:
+        column: id
+        keyGeneratorName: snowflake
+  defaultDatabaseStrategy:
+    standard:
+      shardingColumn: id
+      shardingAlgorithmName: database-inline
+  shardingAlgorithms:
+    database-inline:
+      type: INLINE
+      props:
+        algorithm-expression: ds$->{id % 2}
+    t-router-config-inline:
+      type: INLINE
+      props:
+        algorithm-expression: router_config_$->{id % 3}
+  keyGenerators:
+    snowflake:
+      type: SNOWFLAKE
+
+# 展示执行 SQL
+props:
+  sql-show: true
