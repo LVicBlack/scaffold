@@ -1,7 +1,6 @@
 package cn.vic.trial.shardingsphere.controller;
 
 import cn.vic.trial.shardingsphere.domain.DeviceInfo;
-import cn.vic.trial.shardingsphere.domain.RouterConfig;
 import cn.vic.trial.shardingsphere.service.DeviceInfoService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,9 +21,11 @@ public class DeviceInfoController {
     @Resource
     private DeviceInfoService deviceInfoService;
 
-    @GetMapping("/{id}")
-    public DeviceInfo getById(@PathVariable(value = "id") Long id) {
-        return deviceInfoService.getById(id);
+    @GetMapping("/{tenant_id}")
+    public List<DeviceInfo> queryByTenantId(@PathVariable(value = "tenant_id") Long tenantId) {
+        return deviceInfoService.lambdaQuery()
+                .eq(DeviceInfo::getTenantId, tenantId)
+                .list();
     }
 
     @GetMapping("/query")

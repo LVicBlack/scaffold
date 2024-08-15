@@ -1,5 +1,6 @@
 package cn.vic.trial.shardingsphere.domain;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -19,6 +20,11 @@ public class DeviceInfo implements Serializable {
      */
     @TableId
     private Long id;
+
+    /**
+     * 租户id
+     */
+    private Long tenantId;
 
     /**
      * 设备类型,1-路由器,2-音响,3-摄像头

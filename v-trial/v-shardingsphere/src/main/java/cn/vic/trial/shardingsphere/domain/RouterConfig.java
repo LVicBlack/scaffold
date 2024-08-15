@@ -23,6 +23,11 @@ public class RouterConfig implements Serializable {
     private Long id;
 
     /**
+     * 租户id
+     */
+    private Long tenantId;
+
+    /**
      * 设备id
      */
     private Long deviceId;

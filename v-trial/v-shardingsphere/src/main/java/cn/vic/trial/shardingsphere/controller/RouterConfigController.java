@@ -21,9 +21,11 @@ public class RouterConfigController {
     @Resource
     private RouterConfigService routerConfigService;
 
-    @GetMapping("/{id}")
-    public RouterConfig getById(@PathVariable(value = "id") Long id) {
-        return routerConfigService.getById(id);
+    @GetMapping("/{tenant_id}")
+    public List<RouterConfig> queryByTenantId(@PathVariable(value = "tenant_id") Long tenantId) {
+        return routerConfigService.lambdaQuery()
+                .eq(RouterConfig::getTenantId, tenantId)
+                .list();
     }
 
     @GetMapping("/query")

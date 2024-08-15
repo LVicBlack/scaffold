@@ -6,6 +6,7 @@
 
     <resultMap id="BaseResultMap" type="cn.vic.trial.shardingsphere.domain.RouterConfig">
             <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="tenantId" column="tenant_id" jdbcType="BIGINT"/>
             <result property="deviceId" column="device_id" jdbcType="BIGINT"/>
             <result property="wifiName" column="wifi_name" jdbcType="VARCHAR"/>
             <result property="wifiPassword" column="wifi_password" jdbcType="VARCHAR"/>
@@ -18,7 +19,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,device_id,wifi_name,
+        id,tenant_id,device_id,wifi_name,
         wifi_password,encrypt_type,admin_password,
         wifi_switch,hide_switch,create_time,
         update_time

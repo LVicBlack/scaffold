@@ -27,6 +27,7 @@ DROP TABLE IF EXISTS router_config_2;
 CREATE TABLE device_info
 (
     id                   BIGINT UNSIGNED NOT NULL COMMENT 'id',
+    tenant_id            BIGINT NOT NULL COMMENT '租户id',
     type                 TINYINT COMMENT '设备类型,1-路由器,2-音响,3-摄像头',
     brand                VARCHAR(32) COMMENT '设备品牌',
     model                VARCHAR(32) COMMENT '设备型号',
@@ -45,6 +46,7 @@ ALTER TABLE device_info COMMENT '设备信息';
 CREATE TABLE router_config_0
 (
     id                   BIGINT UNSIGNED NOT NULL COMMENT '主键',
+    tenant_id            BIGINT NOT NULL COMMENT '租户id',
     device_id            BIGINT COMMENT '设备id',
     wifi_name            VARCHAR(32) COMMENT 'wifi名称',
     wifi_password        VARCHAR(64) COMMENT 'wifi密码',
@@ -66,6 +68,7 @@ ALTER TABLE router_config_0 COMMENT '路由器配置信息';
 CREATE TABLE router_config_1
 (
     id                   BIGINT UNSIGNED NOT NULL COMMENT '主键',
+    tenant_id            BIGINT NOT NULL COMMENT '租户id',
     device_id            BIGINT COMMENT '设备id',
     wifi_name            VARCHAR(32) COMMENT 'wifi名称',
     wifi_password        VARCHAR(64) COMMENT 'wifi密码',
@@ -87,6 +90,7 @@ ALTER TABLE router_config_1 COMMENT '路由器配置信息';
 CREATE TABLE router_config_2
 (
     id                   BIGINT UNSIGNED NOT NULL COMMENT '主键',
+    tenant_id            BIGINT NOT NULL COMMENT '租户id',
     device_id            BIGINT COMMENT '设备id',
     wifi_name            VARCHAR(32) COMMENT 'wifi名称',
     wifi_password        VARCHAR(64) COMMENT 'wifi密码',
