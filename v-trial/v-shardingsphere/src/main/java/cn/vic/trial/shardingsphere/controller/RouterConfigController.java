@@ -1,12 +1,10 @@
 package cn.vic.trial.shardingsphere.controller;
 
+import cn.vic.trial.shardingsphere.domain.DeviceInfo;
 import cn.vic.trial.shardingsphere.domain.RouterConfig;
 import cn.vic.trial.shardingsphere.service.RouterConfigService;
 import jakarta.annotation.Resource;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,6 +29,20 @@ public class RouterConfigController {
     @GetMapping("/query")
     public List<RouterConfig> query() {
         return routerConfigService.list();
+    }
+
+    @PostMapping("/add")
+    public void add(@RequestBody RouterConfig routerConfig) {
+        routerConfigService.save(routerConfig);
+    }
+
+    @PostMapping("/update")
+    public void update(@RequestBody RouterConfig routerConfig) {
+        routerConfigService.lambdaUpdate()
+                .eq(RouterConfig::getTenantId, routerConfig.getTenantId())
+                .eq(RouterConfig::getDeviceId, routerConfig.getDeviceId())
+                .eq(RouterConfig::getId, routerConfig.getId())
+                .update(routerConfig);
     }
 
 }

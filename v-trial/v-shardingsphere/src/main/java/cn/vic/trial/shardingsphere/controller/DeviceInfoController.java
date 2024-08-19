@@ -3,10 +3,7 @@ package cn.vic.trial.shardingsphere.controller;
 import cn.vic.trial.shardingsphere.domain.DeviceInfo;
 import cn.vic.trial.shardingsphere.service.DeviceInfoService;
 import jakarta.annotation.Resource;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,6 +28,21 @@ public class DeviceInfoController {
     @GetMapping("/query")
     public List<DeviceInfo> query() {
         return deviceInfoService.list();
+    }
+
+    @PostMapping("/add")
+    public Long add(@RequestBody DeviceInfo deviceInfo) {
+        deviceInfoService.save(deviceInfo);
+        return deviceInfo.getDeviceId();
+    }
+
+    @PostMapping("/update")
+    public Long update(@RequestBody DeviceInfo deviceInfo) {
+        deviceInfoService.lambdaUpdate()
+                .eq(DeviceInfo::getTenantId, deviceInfo.getTenantId())
+                .eq(DeviceInfo::getDeviceId, deviceInfo.getDeviceId())
+                .update(deviceInfo);
+        return deviceInfo.getDeviceId();
     }
 
 }

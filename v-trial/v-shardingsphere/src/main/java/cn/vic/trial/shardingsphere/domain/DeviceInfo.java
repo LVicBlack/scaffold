@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
-import java.util.Date;
 import lombok.Data;
 
 /**
@@ -18,13 +17,18 @@ public class DeviceInfo implements Serializable {
     /**
      * id
      */
-    @TableId
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     /**
      * 租户id
      */
     private Long tenantId;
+
+    /**
+     * 设备id
+     */
+    private Long deviceId;
 
     /**
      * 设备类型,1-路由器,2-音响,3-摄像头
@@ -49,12 +53,12 @@ public class DeviceInfo implements Serializable {
     /**
      * 创建时间
      */
-    private Date createTime;
+    private Long createTime;
 
     /**
      * 更新时间
      */
-    private Date updateTime;
+    private Long updateTime;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

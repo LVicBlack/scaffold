@@ -1,12 +1,12 @@
 package cn.vic.trial.shardingsphere.domain;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * 路由器配置信息
@@ -19,7 +19,7 @@ public class RouterConfig implements Serializable {
     /**
      * 主键
      */
-    @TableId
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     /**
@@ -65,12 +65,12 @@ public class RouterConfig implements Serializable {
     /**
      * 创建时间
      */
-    private Date createTime;
+    private Long createTime;
 
     /**
      * 更新时间
      */
-    private Date updateTime;
+    private Long updateTime;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

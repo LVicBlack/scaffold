@@ -7,17 +7,18 @@
     <resultMap id="BaseResultMap" type="cn.vic.trial.shardingsphere.domain.DeviceInfo">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="tenantId" column="tenant_id" jdbcType="BIGINT"/>
+            <result property="deviceId" column="device_id" jdbcType="BIGINT"/>
             <result property="type" column="type" jdbcType="TINYINT"/>
             <result property="brand" column="brand" jdbcType="VARCHAR"/>
             <result property="model" column="model" jdbcType="VARCHAR"/>
             <result property="name" column="name" jdbcType="VARCHAR"/>
-            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
-            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="createTime" column="create_time" jdbcType="BIGINT"/>
+            <result property="updateTime" column="update_time" jdbcType="BIGINT"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,tenant_id,type,
-        brand,model,name,
-        create_time,update_time
+        id,tenant_id,device_id,
+        type,brand,model,
+        name,create_time,update_time
     </sql>
 </mapper>
