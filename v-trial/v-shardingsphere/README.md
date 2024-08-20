@@ -26,7 +26,8 @@ DROP TABLE IF EXISTS router_config_2;
 /*==============================================================*/
 CREATE TABLE device_info
 (
-    id                   BIGINT NOT NULL COMMENT '设备id',
+    id                   BIGINT auto_increment NOT NULL COMMENT '主键',
+    device_id            BIGINT NOT NULL COMMENT '设备id',
     tenant_id            BIGINT NOT NULL COMMENT '租户id',
     type                 TINYINT COMMENT '设备类型,1-路由器,2-音响,3-摄像头',
     brand                VARCHAR(32) COMMENT '设备品牌',
@@ -34,7 +35,8 @@ CREATE TABLE device_info
     name                 VARCHAR(32) COMMENT '设备名称',
     create_time          BIGINT DEFAULT (UNIX_TIMESTAMP()) COMMENT '创建时间',
     update_time          BIGINT DEFAULT (UNIX_TIMESTAMP()) COMMENT '更新时间',
-    PRIMARY KEY (id)
+    PRIMARY KEY (device_id),
+    constraint device_info_id_unique unique (id)
 )
     ENGINE = INNODB ;
 

@@ -5,7 +5,8 @@
 <mapper namespace="cn.vic.trial.shardingsphere.mapper.DeviceInfoMapper">
 
     <resultMap id="BaseResultMap" type="cn.vic.trial.shardingsphere.domain.DeviceInfo">
-            <id property="id" column="id" jdbcType="BIGINT"/>
+            <id property="deviceId" column="device_id" jdbcType="BIGINT"/>
+            <result property="id" column="id" jdbcType="BIGINT"/>
             <result property="tenantId" column="tenant_id" jdbcType="BIGINT"/>
             <result property="type" column="type" jdbcType="TINYINT"/>
             <result property="brand" column="brand" jdbcType="VARCHAR"/>
@@ -16,8 +17,8 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,tenant_id,type,
-        brand,model,name,
-        create_time,update_time
+        device_id,id,tenant_id,
+        type,brand,model,
+        name,create_time,update_time
     </sql>
 </mapper>
