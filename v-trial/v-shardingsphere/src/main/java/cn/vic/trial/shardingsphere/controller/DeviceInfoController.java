@@ -33,7 +33,7 @@ public class DeviceInfoController {
     @PostMapping("/add")
     public Long add(@RequestBody DeviceInfo deviceInfo) {
         deviceInfoService.save(deviceInfo);
-        return deviceInfo.getId();
+        return deviceInfo.getDeviceId();
     }
 
     @PostMapping("/update")

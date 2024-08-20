@@ -17,7 +17,13 @@ public class DeviceInfo implements Serializable {
     /**
      * 设备id
      */
-    @TableId(value = "id")
+    @TableId(value = "device_id")
+    private Long deviceId;
+
+    /**
+     * 主键
+     */
+    @TableField(value = "id")
     private Long id;
 
     /**

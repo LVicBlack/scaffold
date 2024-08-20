@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 /**
 * @author vic
 * @description 针对表【device_info(设备信息)】的数据库操作Service实现
-* @createDate 2024-08-20 15:37:10
+* @createDate 2024-08-20 15:54:16
 */
 @Service
 public class DeviceInfoServiceImpl extends ServiceImpl<DeviceInfoMapper, DeviceInfo>
