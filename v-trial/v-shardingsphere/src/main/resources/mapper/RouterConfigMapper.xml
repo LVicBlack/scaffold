@@ -19,9 +19,9 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,tenant_id,device_id,wifi_name,
-        wifi_password,encrypt_type,admin_password,
-        wifi_switch,hide_switch,create_time,
-        update_time
+        id,tenant_id,device_id,
+        wifi_name,wifi_password,encrypt_type,
+        admin_password,wifi_switch,hide_switch,
+        create_time,update_time
     </sql>
 </mapper>

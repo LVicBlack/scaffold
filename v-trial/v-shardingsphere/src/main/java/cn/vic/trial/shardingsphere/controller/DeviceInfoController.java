@@ -33,16 +33,16 @@ public class DeviceInfoController {
     @PostMapping("/add")
     public Long add(@RequestBody DeviceInfo deviceInfo) {
         deviceInfoService.save(deviceInfo);
-        return deviceInfo.getDeviceId();
+        return deviceInfo.getId();
     }
 
     @PostMapping("/update")
     public Long update(@RequestBody DeviceInfo deviceInfo) {
         deviceInfoService.lambdaUpdate()
                 .eq(DeviceInfo::getTenantId, deviceInfo.getTenantId())
-                .eq(DeviceInfo::getDeviceId, deviceInfo.getDeviceId())
+                .eq(DeviceInfo::getId, deviceInfo.getId())
                 .update(deviceInfo);
-        return deviceInfo.getDeviceId();
+        return deviceInfo.getId();
     }
 
 }

@@ -15,49 +15,51 @@ import lombok.Data;
 @Data
 public class DeviceInfo implements Serializable {
     /**
-     * id
+     * 设备id
      */
-    @TableId(type = IdType.AUTO)
+    @TableId(value = "id")
     private Long id;
 
     /**
      * 租户id
      */
+    @TableField(value = "tenant_id")
     private Long tenantId;
-
-    /**
-     * 设备id
-     */
-    private Long deviceId;
 
     /**
      * 设备类型,1-路由器,2-音响,3-摄像头
      */
+    @TableField(value = "type")
     private Integer type;
 
     /**
      * 设备品牌
      */
+    @TableField(value = "brand")
     private String brand;
 
     /**
      * 设备型号
      */
+    @TableField(value = "model")
     private String model;
 
     /**
      * 设备名称
      */
+    @TableField(value = "name")
     private String name;
 
     /**
      * 创建时间
      */
+    @TableField(value = "create_time")
     private Long createTime;
 
     /**
      * 更新时间
      */
+    @TableField(value = "update_time")
     private Long updateTime;
 
     @TableField(exist = false)
